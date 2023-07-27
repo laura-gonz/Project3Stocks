@@ -1,9 +1,11 @@
 from flask import Flask, jsonify
+from flask_cors import CORS  # Import Flask-CORS
 from sqlalchemy import create_engine, text
 from sqlalchemy.orm import sessionmaker
 import pandas as pd
 
 app = Flask(__name__)
+CORS(app)
 engine = create_engine('sqlite:///crypto_data.db')
 Session = sessionmaker(bind=engine)
 symbol_batch = ['BTC/USD', 'ETH/USD', 'USDT/USD', 'XRP/USD', 
@@ -45,7 +47,7 @@ def cryptocurrencies():
     conn = engine.connect()
     crypto_data = {}
     for symbol in symbol_batch:
-        table_name = f'crypto_{symbol.replace("/", "_")}'
+        table_name = f'{symbol.replace("/", "_")}'
         query = f"SELECT * FROM {table_name}"
         df = pd.read_sql(query, conn)
         crypto_data[symbol] = df.to_dict(orient='records')
@@ -56,7 +58,7 @@ def cryptocurrencies():
 def cryptocurrency(symbol):
     """Return data for a specific cryptocurrency."""
     conn = engine.connect()
-    table_name = f'crypto_{symbol.replace("/", "_")}'
+    table_name = f'{symbol.replace("/", "_")}'
     query = f"SELECT * FROM {table_name}"
     df = pd.read_sql(query, conn)
     conn.close()

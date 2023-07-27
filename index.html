@@ -1,28 +1,31 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Bellybutton Biodiversity</title>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <title>Cryptocurrency Charts</title>
+  <!-- Add the Chart.js library -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <!-- Add the chartjs-plugin-annotation library -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-annotation/1.1.0/chartjs-plugin-annotation.min.js"></script>
 </head>
-
 <body>
+  <select id="cryptocurrency">
+    <option value="BTC_USD">Bitcoin (BTC) - USD</option>
+    <option value="ADA_USD">Cardano (ADA) - USD</option>
+    <option value="BNB_USD">Binance Coin (BNB) - USD</option>
+    <option value="DOGE_USD">Dogecoin (DOGE) - USD</option>
+    <option value="ETH_USD">Ethereum (ETH) - USD</option>
+    <option value="SOL_USD">Solana (SOL) - USD</option>
+    <option value="USDT_USD">Tether (USDT) - USD</option>
+    <option value="XRP_USD">Ripple (XRP) - USD</option>
 
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12 jumbotron text-center">
-        <h1>Belly Button Biodiversity Dashboard</h1>
-      </div>
+    <!--'ADA_USD', 'BNB_USD', 'BTC_USD', 'DOGE_USD', 'ETH_USD', 'SOL_USD', 'USDT_USD', 'XRP_USD'-->
+  </select>
+    <div style="max-width: 800px; margin: 0 auto;">
+        <h1>Cryptocurrency Price Chart</h1>
+        <canvas id="priceChart"></canvas>
+        <canvas id="rsiChart"></canvas>
+        <canvas id="macdChart" width="400" height="200"></canvas>
     </div>
-  </div>
-
-  <script src="OUR JS CODE HERE"></script>
-
-  <!-- <script src="./static/js/bonus.js"></script> -->
-
+    <script src="logic.js"></script>
 </body>
-
 </html>
